@@ -1,4 +1,4 @@
-EAPI=5
+EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="light: GNU/Linux application to control backlight"
