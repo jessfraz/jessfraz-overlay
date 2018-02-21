@@ -1,4 +1,8 @@
 EAPI=6
+
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="sqlite"
+
 inherit bash-completion-r1
 
 DESCRIPTION="Command-line interface for Google Cloud Platform products and services"
@@ -11,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND=""
-DEPEND=""
+DEPEND="dev-db/sqlite:3"
 
 S="${WORKDIR}/${PN}"
 
