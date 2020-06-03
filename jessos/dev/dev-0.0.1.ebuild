@@ -13,6 +13,7 @@ IUSE=""
 
 RDEPEND="
 	app-emulation/docker
+	app-misc/google-cloud-sdk
 	dev-lang/go
 	dev-lang/python[sqlite]
 	dev-lang/R

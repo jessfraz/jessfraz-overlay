@@ -22,6 +22,7 @@ RDEPEND="
 	media-sound/pulseaudio[alsa(+),alsa-plugin(+),bluetooth(+)]
 	media-sound/pulsemixer
 	net-wireless/iwd[client(+),monitor(+)]
+	sys-apps/light
 	sys-apps/usbutils
 	www-client/google-chrome
 	x11-base/xorg-drivers
