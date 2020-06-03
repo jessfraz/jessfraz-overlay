@@ -6,3 +6,7 @@
 virtual/libgudev systemd
 virtual/libudev systemd
 virtual/udev systemd
+
+# Jess Frazelle
+# Force python to have sqlite for gcloud
+dev-lang/python sqlite

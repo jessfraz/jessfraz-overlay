@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/mesa
 	media-sound/pulseaudio[alsa(+),alsa-plugin(+),bluetooth(+)]
 	media-sound/pulsemixer
-	net-wireless/iwd
+	net-wireless/iwd[client(+),monitor(+)]
 	sys-apps/usbutils
 	www-client/google-chrome
 	x11-base/xorg-drivers
