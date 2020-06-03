@@ -1,3 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
@@ -20,20 +23,19 @@ DEPEND="dev-db/sqlite:3"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	if [ "${A}" != "" ]; then
-		unpack ${A}
-	fi
+	unpack ${A}
 }
 
 src_install() {
 	cp -R "${S}/" "${D}/usr/share/" || die "Install failed!"
+	dodir /usr/share/google-cloud-sdk
 
 	# Symlink binary
-	dosym ${D}/usr/share/google-cloud-sdk/bin/gcloud /usr/bin/gcloud
-	dosym ${D}/usr/share/google-cloud-sdk/bin/gsutil /usr/bin/gsutil
-	dosym ${D}/usr/share/google-cloud-sdk/bin/bq /usr/bin/bq
+	dosym ../../usr/share/google-cloud-sdk/bin/gcloud /usr/bin/gcloud
+	dosym ../../usr/share/google-cloud-sdk/bin/gsutil /usr/bin/gsutil
+	dosym ../../usr/share/google-cloud-sdk/bin/bq /usr/bin/bq
 
 	# Install bash completion
-	newbashcomp ${D}/usr/share/google-cloud-sdk/completion.bash.inc gcloud
+	newbashcomp "${D}"/usr/share/google-cloud-sdk/completion.bash.inc gcloud
 	bashcomp_alias gcloud gsutil bq
 }

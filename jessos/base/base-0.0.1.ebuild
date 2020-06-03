@@ -1,3 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=2
 
 DESCRIPTION="JessOS base (meta package)"
@@ -5,9 +8,8 @@ HOMEPAGE="http://jess.dev"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="systemd"
-
+KEYWORDS="~amd64"
+IUSE="systemd static seccomp static-libs -selinux"
 
 ################################################################################
 #
@@ -103,8 +105,7 @@ RDEPEND="
 	sys-apps/ethtool
 	sys-apps/file
 	sys-apps/findutils
-	sys-apps/fwupd
-	sys-apps/fwupdate
+	sys-apps/fwupd[thunderbolt,dell]
 	sys-apps/gawk
 	sys-apps/grep
 	sys-apps/iproute2
@@ -117,7 +118,7 @@ RDEPEND="
 	sys-apps/rng-tools
 	sys-apps/sed
 	sys-apps/shadow
-	sys-apps/systemd
+	sys-apps/systemd[resolvconf,apparmor]
 	sys-apps/the_silver_searcher
 	sys-apps/usbutils
 	sys-apps/util-linux

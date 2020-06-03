@@ -25,6 +25,7 @@ build: ## Builds the docker image.
 shell: build ## Pop into a shell.
 	@DOCKER_CONTENT_TRUST=0 docker run --rm -i $(DOCKER_FLAGS) \
 		-v $(CURDIR):/var/db/repos/jessfraz \
+		--privileged \
 		$(DOCKER_IMAGE) \
 		bash
 
@@ -32,6 +33,7 @@ shell: build ## Pop into a shell.
 test: build ## Run tests on the overlay.
 	@DOCKER_CONTENT_TRUST=0 docker run --rm -i $(DOCKER_FLAGS) \
 		-v $(CURDIR):/var/db/repos/jessfraz \
+		--privileged \
 		$(DOCKER_IMAGE) \
 		repoman -dx full
 

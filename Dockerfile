@@ -12,6 +12,11 @@ COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 RUN cd /etc/portage \
 	&& ln -snf ../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1 make.profile
 
+# Remove the SELinux profiles.
+RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
+	&& grep -v selinux /var/db/repos/gentoo/profiles/profiles.desc > /tmp/thing \
+	&& mv /tmp/thing /var/db/repos/gentoo/profiles/profiles.desc
+
 # Install repoman.
 RUN emerge -qv \
 	app-editors/vim \
@@ -20,6 +25,10 @@ RUN emerge -qv \
 	dev-vcs/git
 
 ENV EDITOR vim
+
+RUN echo "repoman manifest" > ~/.bash_history \
+	&& echo "repoman -dx full" >> ~/.bash_history \
+	&& echo "metagen -e jessos@jessfraz.com --type person -o metadata.xml" >> ~/.bash_history
 
 # Copy in our files.
 COPY . /var/db/repos/jessfraz
