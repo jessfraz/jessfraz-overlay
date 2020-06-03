@@ -8,16 +8,8 @@ HOMEPAGE="http://jess.dev"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="
-	bash-completion
-	minimal
-	seccomp
-	static
-	static-libs
-	systemd
-	-selinux
-"
+KEYWORDS="amd64"
+IUSE=""
 
 ################################################################################
 #
@@ -78,11 +70,9 @@ RDEPEND="
 	app-arch/xz-utils
 	app-arch/zip
 	app-crypt/gnupg
-	app-crypt/pinentry
 	app-editors/vim
 	app-misc/ca-certificates
 	app-misc/jq
-	app-pda/libimobiledevice
 	app-shells/bash
 	app-shells/bash-completion
 	app-text/tree
@@ -104,16 +94,12 @@ RDEPEND="
 	net-misc/socat
 	net-misc/wget
 	net-misc/whois
-	net-wireless/iwd
-	sys-apps/apparmor
-	sys-apps/apparmor-utils
 	sys-apps/coreutils
 	sys-apps/dbus
 	sys-apps/diffutils
 	sys-apps/ethtool
 	sys-apps/file
 	sys-apps/findutils
-	sys-apps/fwupd[thunderbolt,dell]
 	sys-apps/gawk
 	sys-apps/grep
 	sys-apps/iproute2
@@ -126,9 +112,8 @@ RDEPEND="
 	sys-apps/rng-tools
 	sys-apps/sed
 	sys-apps/shadow
-	sys-apps/systemd[resolvconf,apparmor]
+	sys-apps/systemd[resolvconf]
 	sys-apps/the_silver_searcher
-	sys-apps/usbutils
 	sys-apps/util-linux
 	sys-apps/which
 	sys-block/open-iscsi
@@ -137,9 +122,7 @@ RDEPEND="
 	sys-fs/btrfs-progs
 	sys-fs/dosfstools
 	sys-fs/e2fsprogs
-	sys-fs/lvm2
 	sys-fs/mdadm
-	sys-fs/multipath-tools
 	sys-fs/quota
 	sys-fs/xfsprogs
 	sys-libs/glibc

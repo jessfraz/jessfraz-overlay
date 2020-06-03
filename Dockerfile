@@ -10,7 +10,7 @@ COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 
 # Set up the make.profile symlink.
 RUN cd /etc/portage \
-	&& ln -snf ../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1 make.profile
+	&& ln -snf ../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1/systemd make.profile
 
 # Remove the SELinux profiles.
 RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
@@ -26,9 +26,8 @@ RUN emerge -qv \
 	dev-vcs/git
 
 #Enable the repos.
-COPY repos.conf /etc/portage/repos.conf
-RUN eselect repository enable {gentoo,jessfraz-overlay} \
-	&& echo 'CONFIG_PROTECT="-*"' >> /etc/portage/make.conf
+COPY etc/portage /etc/portage
+RUN eselect repository enable {gentoo,jessfraz-overlay}
 
 ENV EDITOR vim
 
