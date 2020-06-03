@@ -19,3 +19,6 @@ herself.
 - [ ] tests that try to install all the ebuilds
 - [ ] cache the docker build to make it faster for CI
 - [ ] go through all the USE flags individually for everything in base
+- [ ] rebuild world again with new use flags after our files are copied in
+- [ ] build custom kernel
+- [ ] add dev ebuild with programming languages: go, rust, node, R, python

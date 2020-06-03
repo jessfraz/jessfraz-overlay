@@ -28,7 +28,7 @@ RUN emerge -qv \
 	app-portage/repoman \
 	dev-vcs/git
 
-#Enable the repos.
+# Enable the repos.
 COPY etc/portage /etc/portage
 RUN eselect repository enable {gentoo,jessfraz-overlay}
 
