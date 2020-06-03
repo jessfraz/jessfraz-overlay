@@ -9,7 +9,15 @@ HOMEPAGE="http://jess.dev"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="systemd static seccomp static-libs -selinux"
+IUSE="
+	bash-completion
+	minimal
+	seccomp
+	static
+	static-libs
+	systemd
+	-selinux
+"
 
 ################################################################################
 #

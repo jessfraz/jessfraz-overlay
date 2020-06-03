@@ -14,11 +14,11 @@ SRC_URI="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${PN}-${PV}-
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
-RDEPEND=""
-DEPEND="dev-db/sqlite:3"
+DEPEND=""
+RDEPEND="dev-db/sqlite:3"
 
 S="${WORKDIR}/${PN}"
 
@@ -27,12 +27,15 @@ src_unpack() {
 }
 
 src_install() {
+	dodir /usr/share/google-cloud-sdk
+	cp -R "${S}/" "${D}usr/share/" || die "Install failed!"
+
 	# Symlink binary
-	dobin "${S}/usr/share/google-cloud-sdk/bin/gcloud"
-	dobin "${S}/usr/share/google-cloud-sdk/bin/gsutil"
-	dobin "${S}/usr/share/google-cloud-sdk/bin/bq"
+	dosym ../../usr/share/google-cloud-sdk/bin/gcloud /usr/bin/gcloud
+	dosym ../../usr/share/google-cloud-sdk/bin/gsutil /usr/bin/gsutil
+	dosym ../../usr/share/google-cloud-sdk/bin/bq /usr/bin/bq
 
 	# Install bash completion
-	newbashcomp "${D}/usr/share/google-cloud-sdk/completion.bash.inc" gcloud
+	newbashcomp "${D}usr/share/google-cloud-sdk/completion.bash.inc" gcloud
 	bashcomp_alias gcloud gsutil bq
 }
