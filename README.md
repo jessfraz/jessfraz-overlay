@@ -25,3 +25,4 @@ herself or has forked.
       out of date
 - [ ] make static builds for dev packages
 - [ ] only use one version of python
+- [ ] we shouldn't require cups

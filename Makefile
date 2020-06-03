@@ -25,6 +25,7 @@ build: ## Builds the docker image.
 shell: build ## Pop into a shell.
 	@DOCKER_CONTENT_TRUST=0 docker run --rm -i $(DOCKER_FLAGS) \
 		-v $(CURDIR):/var/db/repos/jessfraz \
+		-v $(CURDIR)/etc/portage:/etc/portage \
 		--privileged \
 		$(DOCKER_IMAGE) \
 		bash
@@ -32,10 +33,11 @@ shell: build ## Pop into a shell.
 .PHONY: test
 test: build ## Run tests on the overlay.
 	@DOCKER_CONTENT_TRUST=0 docker run --rm -i $(DOCKER_FLAGS) \
-		-v $(CURDIR):/var/db/repos/jessfraz \
+		-v $(CURDIR):/var/db/repos/jessfraz:ro \
+		-v $(CURDIR)/etc/portage:/etc/portage:ro \
 		--privileged \
 		$(DOCKER_IMAGE) \
-		repoman -dx full
+		repoman -dx full --include-arches amd64,~amd64
 
 .PHONY: help
 help:

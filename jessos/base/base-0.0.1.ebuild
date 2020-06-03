@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=5
 
 DESCRIPTION="JessOS base (meta package)"
 HOMEPAGE="http://jess.dev"
@@ -80,7 +80,7 @@ RDEPEND="
 	dev-util/indent
 	dev-util/strace[static(+)]
 	dev-vcs/git
-	net-analyzer/net-cat[static(+)]
+	net-analyzer/netcat[static(+)]
 	net-analyzer/traceroute[static(+)]
 	net-dns/bind-tools
 	net-dns/dnsmasq[static(+)]
@@ -91,10 +91,10 @@ RDEPEND="
 	net-misc/bridge-utils
 	net-misc/curl
 	net-misc/dhcpcd
-	net-misc/dropbear[static(+)]
+	net-misc/dropbear[-pam,static(+)]
 	net-misc/iputils[static(+)]
 	net-misc/ntp
-	net-misc/openssh[static(+)]
+	net-misc/openssh
 	net-misc/rsync
 	net-misc/socat
 	net-misc/wget[static(+)]

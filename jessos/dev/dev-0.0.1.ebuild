@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=5
 
 DESCRIPTION="JessOS dev (meta package)"
 HOMEPAGE="http://jess.dev"
@@ -12,7 +12,6 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="
-	app-emulation/docker
 	app-misc/google-cloud-sdk
 	dev-lang/go
 	dev-lang/python[sqlite]
