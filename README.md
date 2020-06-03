@@ -16,3 +16,6 @@ herself.
 - [ ] static USE without breaking systemd
 - [ ] use the hardened profile
 - [ ] desktop package
+- [ ] tests that try to install all the ebuilds
+- [ ] cache the docker build to make it faster for CI
+- [ ] go through all the USE flags individually for everything in base
