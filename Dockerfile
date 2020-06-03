@@ -17,6 +17,9 @@ RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
 	&& grep -v selinux /var/db/repos/gentoo/profiles/profiles.desc > /tmp/thing \
 	&& mv /tmp/thing /var/db/repos/gentoo/profiles/profiles.desc
 
+# Update the world for the new profile.
+RUN emerge --ask --update --newuse --deep --complete-graph @world
+
 # Install repoman.
 RUN emerge -qv \
 	app-editors/vim \
