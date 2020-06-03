@@ -23,7 +23,9 @@ RDEPEND="dev-db/sqlite:3"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	unpack ${A}
+	if [[ -n ${A} ]]; then
+		unpack ${A}
+	fi
 }
 
 src_install() {

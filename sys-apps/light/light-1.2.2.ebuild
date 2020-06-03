@@ -2,27 +2,35 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="light: GNU/Linux application to control backlight"
 HOMEPAGE="http://haikarainen.github.io/light"
-COMMIT="1ec60ac183cf1b04ff46897ad095ce7704225d80"
-SRC_URI="https://github.com/haikarainen/${PN}/tarball/master -> ${PN}-${COMMIT}.tar.gz"
+SRC_URI="https://github.com/haikarainen/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND=""
 DEPEND=""
 
-S="${WORKDIR}/${PN}-master"
+S="${WORKDIR}/${PN}-${PV}"
+
+src_unpack() {
+	if [[ -n ${A} ]]; then
+		unpack ${A}
+	fi
+}
+
+src_configure() {
+	./autogen.sh
+	econf
+}
 
 src_compile() {
-	elog "dir: $(ls -la)"
 	default
-	elog "dir: $(ls -la)"
 	append-lfs-flags
 	emake \
 		CC="$(tc-getCC)" \
@@ -31,5 +39,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin light
+	dobin src/light
+
+	doman light.1
 }
