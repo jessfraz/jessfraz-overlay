@@ -8,6 +8,9 @@ FROM gentoo/stage3-amd64:latest
 # Copy in the portage volume.
 COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 
+# Copy in our portage files.
+COPY etc/portage /etc/portage
+
 # Set up the make.profile symlink.
 RUN cd /etc/portage \
 	&& ln -snf ../../var/db/repos/gentoo/profiles/default/linux/amd64/17.1/systemd make.profile
@@ -18,7 +21,6 @@ RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
 	&& mv /tmp/thing /var/db/repos/gentoo/profiles/profiles.desc
 
 # Update the world for the new profile.
-RUN echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox"' >> /etc/portage/make.conf
 RUN emerge --update --newuse --deep --complete-graph @world \
 	&& emerge -v --depclean
 
@@ -31,7 +33,6 @@ RUN emerge -qv \
 	dev-vcs/git
 
 # Enable the repos.
-COPY etc/portage /etc/portage
 RUN eselect repository enable {gentoo,jessfraz-overlay}
 
 ENV EDITOR vim

@@ -64,8 +64,9 @@ IUSE=""
 
 RDEPEND="
 	app-admin/sudo
-	app-arch/gzip
-	app-arch/tar
+	app-arch/bzip2[static(+)]
+	app-arch/gzip[static(+)]
+	app-arch/tar[static(+)]
 	app-arch/unzip
 	app-arch/xz-utils
 	app-arch/zip
@@ -73,53 +74,59 @@ RDEPEND="
 	app-editors/vim
 	app-misc/ca-certificates
 	app-misc/jq
-	app-shells/bash
+	app-shells/bash[static(+)]
 	app-shells/bash-completion
 	app-text/tree
 	dev-util/indent
-	dev-util/strace
+	dev-util/strace[static(+)]
 	dev-vcs/git
+	net-analyzer/net-cat[static(+)]
+	net-analyzer/traceroute[static(+)]
 	net-dns/bind-tools
-	net-firewall/ebtables
+	net-dns/dnsmasq[static(+)]
+	net-firewall/ebtables[static(+)]
 	net-firewall/ipset
 	net-firewall/iptables
 	net-firewall/nftables
 	net-misc/bridge-utils
 	net-misc/curl
 	net-misc/dhcpcd
-	net-misc/iputils
+	net-misc/dropbear[static(+)]
+	net-misc/iputils[static(+)]
 	net-misc/ntp
-	net-misc/openssh
+	net-misc/openssh[static(+)]
 	net-misc/rsync
 	net-misc/socat
-	net-misc/wget
+	net-misc/wget[static(+)]
 	net-misc/whois
-	sys-apps/coreutils
+	sys-apps/coreutils[static(+)]
 	sys-apps/dbus
-	sys-apps/diffutils
+	sys-apps/diffutils[static(+)]
 	sys-apps/ethtool
 	sys-apps/file
-	sys-apps/findutils
+	sys-apps/findutils[static(+)]
 	sys-apps/gawk
 	sys-apps/grep
 	sys-apps/iproute2
 	sys-apps/kexec-tools
 	sys-apps/less
 	sys-apps/lshw
-	sys-apps/net-tools
+	sys-apps/net-tools[static(+)]
 	sys-apps/nvme-cli
 	sys-apps/pciutils
 	sys-apps/rng-tools
-	sys-apps/sed
+	sys-apps/sed[static(+)]
 	sys-apps/shadow
-	sys-apps/systemd[resolvconf]
+	sys-apps/systemd[resolvconf(+)]
 	sys-apps/the_silver_searcher
 	sys-apps/util-linux
 	sys-apps/which
 	sys-block/open-iscsi
+	sys-devel/bc[static(+)]
 	sys-devel/gcc
-	sys-devel/make
-	sys-fs/btrfs-progs
+	sys-devel/make[static(+)]
+	sys-devel/patch[static(+)]
+	sys-fs/btrfs-progs[static(+)]
 	sys-fs/dosfstools
 	sys-fs/e2fsprogs
 	sys-fs/mdadm

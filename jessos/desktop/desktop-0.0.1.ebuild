@@ -12,20 +12,24 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="
-	app-crypt/pinentry
+	app-crypt/pinentry[static(+)]
 	app-pda/libimobiledevice
 	jessos/base
 	media-gfx/feh
 	media-gfx/scrot
-	media-sound/pulseaudio[alsa,alsa-plugin,bluetooth]
+	media-libs/mesa
+	media-sound/pulseaudio[alsa(+),alsa-plugin(+),bluetooth(+)]
 	media-sound/pulsemixer
 	net-wireless/iwd
 	sys-apps/usbutils
 	www-client/google-chrome
+	x11-base/xorg-drivers
+	x11-base/xorg-server
+	x11-drivers/xf86-video-intel
 	x11-misc/i3lock
 	x11-misc/rofi
 	x11-misc/xclip
-	x11-terms/rxvt-unicode[256-color,blinking,fading-colors,font-styles,gdk-pixbuf,iso14755,mousewheel,unicode3,xft]
+	x11-terms/rxvt-unicode[256-color(+),blinking(+),fading-colors(+),font-styles(+),gdk-pixbuf(+),iso14755(+),mousewheel(+),unicode3(+),xft(+)]
 	x11-wm/i3
 	x11-wm/i3status
 "
