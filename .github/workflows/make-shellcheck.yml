@@ -1,0 +1,12 @@
+on:
+  push
+name: make shellcheck
+jobs:
+  shellcheck:
+    name: make shellcheck
+    runs-on: ubuntu-lashellcheck
+    steps:
+      - uses: actions/checkout@master
+      - name: make shellcheck
+        run: make shellcheck
+        shell: bash

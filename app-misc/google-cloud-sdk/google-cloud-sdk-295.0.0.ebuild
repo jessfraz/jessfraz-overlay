@@ -9,7 +9,7 @@ DESCRIPTION="Command-line interface for Google Cloud Platform products and servi
 HOMEPAGE="https://cloud.google.com/sdk"
 SRC_URI="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${PN}-${PV}-linux-x86_64.tar.gz"
 
-LICENSE="See https://cloud.google.com/terms/"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -26,7 +26,6 @@ src_unpack() {
 }
 
 src_install() {
-	dodir ${ROOT}/usr/share/google-cloud-sdk
 	cp -R "${S}/" "${D}/usr/share/" || die "Install failed!"
 
 	# Symlink binary
