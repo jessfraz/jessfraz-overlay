@@ -27,15 +27,12 @@ src_unpack() {
 }
 
 src_install() {
-	cp -R "${S}/" "${D}/usr/share/" || die "Install failed!"
-	dodir /usr/share/google-cloud-sdk
-
 	# Symlink binary
-	dosym ../../usr/share/google-cloud-sdk/bin/gcloud /usr/bin/gcloud
-	dosym ../../usr/share/google-cloud-sdk/bin/gsutil /usr/bin/gsutil
-	dosym ../../usr/share/google-cloud-sdk/bin/bq /usr/bin/bq
+	dobin "${S}/usr/share/google-cloud-sdk/bin/gcloud"
+	dobin "${S}/usr/share/google-cloud-sdk/bin/gsutil"
+	dobin "${S}/usr/share/google-cloud-sdk/bin/bq"
 
 	# Install bash completion
-	newbashcomp "${D}"/usr/share/google-cloud-sdk/completion.bash.inc gcloud
+	newbashcomp "${D}/usr/share/google-cloud-sdk/completion.bash.inc" gcloud
 	bashcomp_alias gcloud gsutil bq
 }

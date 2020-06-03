@@ -20,9 +20,14 @@ RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
 # Install repoman.
 RUN emerge -qv \
 	app-editors/vim \
+	app-eselect/eselect-repository \
 	app-portage/metagen \
 	app-portage/repoman \
 	dev-vcs/git
+
+#Enable the repos.
+COPY repos.conf /etc/portage/repos.conf
+RUN eselect repository enable {gentoo,jessfraz-overlay}
 
 ENV EDITOR vim
 
