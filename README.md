@@ -22,3 +22,5 @@ herself or has forked.
 - [ ] rebuild world again with new use flags after our files are copied in
 - [ ] build custom kernel
 - [ ] add dev ebuild with programming languages: go, rust, node, R, python
+- [ ] script like in dockerfiles repo to check package versions when they are
+      out of date
