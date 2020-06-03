@@ -18,7 +18,9 @@ RUN find /var/db/repos/gentoo/profiles/ -iname "selinux" | xargs rm -rf \
 	&& mv /tmp/thing /var/db/repos/gentoo/profiles/profiles.desc
 
 # Update the world for the new profile.
-RUN emerge --ask --update --newuse --deep --complete-graph @world
+RUN echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox"' >> /etc/portage/make.conf
+RUN emerge --update --newuse --deep --complete-graph @world \
+	&& emerge -v --depclean
 
 # Install repoman.
 RUN emerge -qv \
