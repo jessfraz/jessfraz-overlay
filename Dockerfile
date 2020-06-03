@@ -27,7 +27,8 @@ RUN emerge -qv \
 
 #Enable the repos.
 COPY repos.conf /etc/portage/repos.conf
-RUN eselect repository enable {gentoo,jessfraz-overlay}
+RUN eselect repository enable {gentoo,jessfraz-overlay} \
+	&& echo 'CONFIG_PROTECT="-*"' >> /etc/portage/make.conf
 
 ENV EDITOR vim
 

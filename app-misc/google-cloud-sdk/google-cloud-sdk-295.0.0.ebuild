@@ -3,10 +3,12 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite"
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit bash-completion-r1
+# This has to go after PYTHON_COMPAT!
+inherit python-single-r1 bash-completion-r1
+
+PYTHON_REQ_USE="sqlite"
 
 DESCRIPTION="Command-line interface for Google Cloud Platform products and services"
 HOMEPAGE="https://cloud.google.com/sdk"
@@ -18,7 +20,7 @@ KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-db/sqlite:3"
+RDEPEND="$(python_gen_impl_dep 'sqlite(+)')"
 
 S="${WORKDIR}/${PN}"
 
@@ -28,16 +30,23 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+	python_fix_shebang --force .
+}
+
 src_install() {
-	dodir /usr/share/google-cloud-sdk
+	dodir "/usr/share/${PN}"
 	cp -R "${S}/" "${D}usr/share/" || die "Install failed!"
 
+	python_optimize "${D}usr/share/${PN}"
+
 	# Symlink binary
-	dosym ../../usr/share/google-cloud-sdk/bin/gcloud /usr/bin/gcloud
-	dosym ../../usr/share/google-cloud-sdk/bin/gsutil /usr/bin/gsutil
-	dosym ../../usr/share/google-cloud-sdk/bin/bq /usr/bin/bq
+	dosym "../../usr/share/${PN}/bin/gcloud" /usr/bin/gcloud
+	dosym "../../usr/share/${PN}/bin/gsutil" /usr/bin/gsutil
+	dosym "../../usr/share/${PN}/bin/bq" /usr/bin/bq
 
 	# Install bash completion
-	newbashcomp "${D}usr/share/google-cloud-sdk/completion.bash.inc" gcloud
+	newbashcomp "${D}usr/share/${PN}/completion.bash.inc" gcloud
 	bashcomp_alias gcloud gsutil bq
 }
