@@ -28,6 +28,7 @@ RUN emerge --update --newuse --deep --complete-graph @world \
 RUN emerge -qv \
 	app-editors/vim \
 	app-eselect/eselect-repository \
+	app-portage/gentoolkit \
 	app-portage/metagen \
 	app-portage/repoman \
 	dev-vcs/git

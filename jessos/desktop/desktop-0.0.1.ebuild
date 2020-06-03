@@ -15,6 +15,7 @@ RDEPEND="
 	app-crypt/pinentry[static(+)]
 	app-pda/libimobiledevice
 	jessos/base
+	jessos/dev
 	media-gfx/feh
 	media-gfx/scrot
 	media-libs/mesa
