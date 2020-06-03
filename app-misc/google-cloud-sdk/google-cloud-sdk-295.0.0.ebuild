@@ -30,16 +30,9 @@ src_unpack() {
 	fi
 }
 
-src_prepare() {
-	default
-	python_fix_shebang --force .
-}
-
 src_install() {
 	dodir "/usr/share/${PN}"
 	cp -R "${S}/" "${D}usr/share/" || die "Install failed!"
-
-	python_optimize "${D}usr/share/${PN}"
 
 	# Symlink binary
 	dosym "../../usr/share/${PN}/bin/gcloud" /usr/bin/gcloud
